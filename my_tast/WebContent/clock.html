@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script type="text/javascript">
+$(function(){
+	setInterval(function() {
+		$("td").css("color"," black");
+		
+		var date = new Date();
+		date.setHours(date.getHours()+9);
+		var a= (date.toISOString().substr(11, 8));
+ if(date.toISOString().substr(11, 2)<13){
+
+		var h1 =parseInt(date.toISOString().substr(11, 2));
+}else{
+	var h1 =parseInt(date.toISOString().substr(11, 2))-12;
+} 
+		var m1 ="0"+(date.toISOString().substr(14, 1));
+        var m2 =(date.toISOString().substr(15, 1));
+        
+        var s1 ="0"+(date.toISOString().substr(17, 1));
+        var s2 =(date.toISOString().substr(18, 1));
+        
+        $(".hour").children("#시").css("color","red");
+        $(".hour").children("#"+h1).css("color","red");
+      
+        $(".minute").children("#"+m1).css("color","red");
+        $(".minute").children("#"+m2).css("color","red");
+        
+        $(".s").children("#"+s1).css("color","red");
+        $(".s").children("#"+s2).css("color","red");
+        
+        if(h1==0){
+        	 $(".hour").children("#12").css("color","red");
+        }
+        
+        
+        if(h1==11|| h1==12 || h1==0){
+        	 $(".hour").children("#10").css("color","red");
+        }
+        
+        if(m1!="00"){
+        	$(".minute").children("#01").css("color","red");
+        	
+        }
+        if(s1!="00"){
+        	$(".s").children("#01").css("color","red");
+        	
+        }
+     if((date.toISOString().substr(11, 2))=="12"&&(date.toISOString().substr(14, 2))=="00"){
+    	  $(".minute").children("#정").css("color","red");
+    	  $(".minute").children("#오").css("color","red");
+     }
+     if((date.toISOString().substr(11, 2))=="00"&&(date.toISOString().substr(14, 2))=="00"){
+   	  $(".minute").children("#자").css("color","red");
+   	  $(".minute").children("#정").css("color","red");
+    }
+       if((date.toISOString().substr(14, 2))!="00"){
+    	 	  $(".minute").children("#분").css("color","red");
+       }
+       
+       if((date.toISOString().substr(17, 2))!="00"){
+ 	 	  $(".s").children("#초").css("color","red");
+    }
+	$("#clock").text("[숫자] "+a);
+		
+	}, 500);
+
+})
+
+
+</script>
+<style type="text/css">
+td{
+width: 100px;
+height: 100px;
+font-size: 50px;
+
+}
+#시{
+color: red;
+}
+
+</style>
+</head>
+<body>
+
+<div align="center">
+<table >
+
+<tr class="hour"><td id="1" > 한 </td><td id="2"> 두 </td><td id="3"> 세 </td><td id="4"> 네 </td><td id="5"> 다 </td><td id="5"> 섯 <td></tr>
+<tr class="hour"><td id="6"> 여 </td><td id="6"> 섯 </td><td id="7"> 일 </td><td id="7"> 곱 </td><td id="8"> 여 </td><td id="8"> 덟 <td></tr>
+<tr class="hour"><td id="9"> 아 </td><td id="9"> 홉 </td><td id="10"> 열 </td><td id="11"> 한 </td><td id="12"> 두 </td><td id="시"> 시 <td></tr>
+<tr class="minute"><td id="자"> 자 </td><td id="02"> 이 </td><td id="03"> 삼 </td><td id="04"> 사 </td><td id="05"> 오 </td><td id="01"> 십 <td></tr>
+<tr class="minute"><td id="정"> 정 </td><td id="1"> 일 </td><td id="2"> 이 </td><td id="3"> 삼 </td><td id="4"> 사 </td><td id="5"> 오 <td></tr>
+<tr class="minute"><td id="오"> 오 </td><td id="6"> 육 </td><td id="7"> 칠 </td><td id="8"> 팔 </td><td id="9"> 구 </td><td id="분"> 분 <td></tr>
+<tr align="center"> <td colspan="5" id="clock"><td></tr>
+
+</table>
+
+
+<table>
+<tr class="s"><td id="02"> 이 </td><td id="03"> 삼 </td><td id="04"> 사 </td><td id="05"> 오 </td><td id="01"> 십 <td></tr>
+<tr class="s"><td id="1"> 일 </td><td id="2"> 이 </td><td id="3"> 삼 </td><td id="4"> 사 </td><td id="5"> 오 <td></tr>
+<tr class="s"><td id="6"> 육 </td><td id="7"> 칠 </td><td id="8"> 팔 </td><td id="9"> 구 </td><td id="초"> 초 <td></tr>
+
+</table>
+</div>
+</body>
+</html>
